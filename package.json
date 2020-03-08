@@ -1,0 +1,36 @@
+{
+  "name": "m-cache",
+  "version": "0.0.1",
+  "description": "Memory key/value cache (lru, lfu, fifo)",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -d --declarationDir types --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs",
+    "test:unit": "jest",
+    "prepubish": "npm run test:unit && npm run build"
+  },
+  "files": [
+    "/dist",
+    "/types"
+  ],
+  "author": "dawenci <hi@dawenci.me>",
+  "keywords": [
+    "lru",
+    "lfu",
+    "fifo",
+    "cache"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dawenci/m-cache.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  }
+}
