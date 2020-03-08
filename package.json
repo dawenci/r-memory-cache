@@ -1,6 +1,6 @@
 {
   "name": "r-memory-cache",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Memory key/value cache (lru, lfu, fifo)",
   "module": "dist/esm/index.js",
   "main": "dist/cjs/index.js",
