@@ -1,5 +1,5 @@
 {
-  "name": "m-cache",
+  "name": "r-memory-cache",
   "version": "0.0.1",
   "description": "Memory key/value cache (lru, lfu, fifo)",
   "module": "dist/esm/index.js",
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dawenci/m-cache.git"
+    "url": "https://github.com/dawenci/r-memory-cache.git"
   },
   "license": "MIT",
   "devDependencies": {

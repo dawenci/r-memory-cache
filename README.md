@@ -1,15 +1,15 @@
-# m-cache
+# r-memory-cache
 
 ## Installation
 
 ```
-npm install m-cache --save
+npm install r-memory-cache --save
 ```
 
 ## Usage
 
 ```typescript
-import { createCache } from 'm-cache'
+import { createCache } from 'r-memory-cache'
 const cache = createCache('LRU', { capacity: 2 })
 
 cache.type // 'LRU'
@@ -42,7 +42,7 @@ cache.length // 0
 ### `createCache(type[, options])`
 
 ```typescript
-import { createCache } from 'm-cache'
+import { createCache } from 'r-memory-cache'
 
 const lruCache = createCache('LRU')
 const lruCache2 = createCache('LRU', { capacity: 100 })
