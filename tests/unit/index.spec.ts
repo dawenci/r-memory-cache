@@ -8,5 +8,6 @@ describe('create', () => {
     expect(createCache('LRU') instanceof Lru).toBe(true)
     expect(createCache('LFU') instanceof Lfu).toBe(true)
     expect(createCache('FIFO') instanceof Fifo).toBe(true)
+    expect(() => createCache('OTHER' as any)).toThrowError(Error)
   })
 })

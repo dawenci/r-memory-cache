@@ -11,6 +11,8 @@ describe('FIFO', () => {
     expect(cache.get(1)).toBe(undefined)
     cache.put(1, 1)
     expect(cache.get(1)).toBe(1)
+    cache.put(1, 2)
+    expect(cache.get(1)).toBe(2)
   })
 
   it('capacity', () => {
@@ -55,6 +57,11 @@ describe('FIFO', () => {
     expect(cache.get(1)).toBe(undefined)
     expect(cache.get(2)).toBe(undefined)
     expect(cache.get(3)).toBe(undefined)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    cache.del(2)
+    expect(cache.get(1)).toBe(1)
+    expect(cache.get(2)).toBe(undefined)
   })
 
   it('keys', () => {

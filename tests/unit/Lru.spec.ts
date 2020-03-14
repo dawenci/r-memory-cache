@@ -11,6 +11,8 @@ describe('LRU', () => {
     expect(cache.get(1)).toBe(undefined)
     cache.put(1, 1)
     expect(cache.get(1)).toBe(1)
+    cache.put(1, 2)
+    expect(cache.get(1)).toBe(2)
   })
 
   it('capacity', () => {
@@ -51,6 +53,18 @@ describe('LRU', () => {
     expect(cache3.get(1)).toBe(10)
     expect(cache3.get(2)).toBe(undefined)
     expect(cache3.get(3)).toBe(3)
+
+    //
+    const cache4 = new Lru({ capacity: 3 })
+    cache4.put(1, 1)
+    cache4.put(2, 2)
+    cache4.put(3, 3)
+    cache4.get(2)
+    cache4.put(4, 4)
+    expect(cache4.get(undefined)).toBe(undefined)
+    expect(cache4.get(2)).toBe(2)
+    expect(cache4.get(3)).toBe(3)
+    expect(cache4.get(4)).toBe(4)
   })
 
   it('del', () => {
@@ -71,6 +85,11 @@ describe('LRU', () => {
     expect(cache.get(1)).toBe(undefined)
     expect(cache.get(2)).toBe(undefined)
     expect(cache.get(3)).toBe(undefined)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    cache.del(2)
+    expect(cache.get(1)).toBe(1)
+    expect(cache.get(2)).toBe(undefined)
   })
 
   it('keys', () => {

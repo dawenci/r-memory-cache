@@ -11,6 +11,8 @@ describe('LFU', () => {
     expect(cache.get(1)).toBe(undefined)
     cache.put(1, 1)
     expect(cache.get(1)).toBe(1)
+    cache.put(1, 2)
+    expect(cache.get(1)).toBe(2)
   })
 
   it('capacity', () => {
@@ -51,6 +53,27 @@ describe('LFU', () => {
     expect(cache3.get(1)).toBe(10) // (3*1) (1*3)
     expect(cache3.get(2)).toBe(undefined)
     expect(cache3.get(3)).toBe(3) // (3*2) (1*3)
+
+    const cache4 = new Lfu({ capacity: 3 })
+    cache4.put(1, 1) // (1*1)
+    cache4.put(2, 2) // (1*1) (2*1)
+    cache4.put(3, 3) // (1*1) (2*1) (3*1)
+    cache4.get(1) // (1*2) (2*1) (3*1)
+    cache4.get(2) // (1*2) (2*2) (3*1)
+    cache4.put(4, 4) // (1*2) (2*2) (4*1)
+    expect(cache4.get(1)).toBe(1)
+    expect(cache4.get(2)).toBe(2)
+    expect(cache4.get(3)).toBe(undefined)
+    expect(cache4.get(4)).toBe(4)
+
+    const cache5 = new Lfu({ capacity: 2 })
+    cache5.put(1, 1) // (1*1)
+    cache5.get(1) // (1*2)
+    cache5.put(2, 2) // (1*2) (2*1)
+    cache5.put(3, 3) // (1*2) (3*1)
+    expect(cache5.get(1)).toBe(1)
+    expect(cache5.get(2)).toBe(undefined)
+    expect(cache5.get(3)).toBe(3)
   })
 
   it('del', () => {
